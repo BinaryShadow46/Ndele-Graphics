@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ndele Graphics — Premium Graphic Design & Branding</title>
+  <meta name="description" content="Ndele Graphics — Premium graphic design services: logos, posters, brand kits, business cards, social media designs. Professional portfolio, pricing packages, testimonials, and contact options (WhatsApp & Email).">
+  <meta name="keywords" content="Graphic design, Logo design, Posters, Brand kit, Business cards, Social media design, Ndele Graphics, Tanzania, Mbeya">
+  <link rel="icon" href="favicon.ico" />
+  <!-- Google Font: Exo 2 -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+  <style>
+    :root{
+      --bg:#030313; --card:#0b0b14; --muted:#99a0b0; --accent:#00ffd5; --glass:rgba(255,255,255,0.03);
+      --maxw:1200px; --radius:14px; --fw: 'Exo 2', system-ui, -apple-system;
+    }
+    [data-theme="light"]{ --bg:#f6f8fb; --card:#ffffff; --muted:#556; --accent:#0066ff; --glass:rgba(0,0,0,0.04); }
+    *{box-sizing:border-box;}
+    html,body{height:100%;margin:0;font-family:var(--fw);background:radial-gradient(1200px 600px at 10% 10%, rgba(0,150,200,0.06), transparent), radial-gradient(1000px 500px at 90% 90%, rgba(120,0,200,0.04), transparent), var(--bg);color: #e8eef9;}
+
+    /* floating techy blobs */
+    .float-blob{position:fixed;pointer-events:none;border-radius:50%;filter:blur(40px);opacity:0.2;mix-blend-mode:screen;}
+    .blob-a{width:420px;height:420px;left:-80px;top:-60px;background:linear-gradient(120deg,#00ffd5,#0066ff);}
+    .blob-b{width:300px;height:300px;right:-60px;bottom:-40px;background:linear-gradient(120deg,#ff00d1,#6a00ff);}
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7b61ff);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;}
+    nav{display:flex;gap:18px;align-items:center;}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;}
+    .cta{background:var(--accent);color:#001;border-radius:10px;padding:8px 14px;font-weight:700;}
+
+    /* hamburger */
+    .hamb{display:none;}
+    .menu{display:flex;gap:12px;}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0;}
+    .hero h1{font-size:34px;margin:0 0 12px;}
+    .hero p{color:var(--muted);line-height:1.6;}
+    .hero .actions{margin-top:18px;display:flex;gap:12px;}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.5);}
+
+    /* portfolio */    
+       .portfolio {
+    padding:40px;
+    }
+    .portfolio h2 {
+    text-align:center; 
+    margin-bottom:20px;
+    }
+    .filters {
+    text-align:center; 
+    margin-bottom:20px;
+    }
+    .filters button {
+    margin:5px; 
+    padding:10px 20px; 
+    border:none; 
+    cursor:pointer; 
+    background:var(--glass); 
+    color:#fff; 
+    border-radius:5px;
+    }
+        .card{
+        background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.5);
+        }
+    .grid {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;
+    }
+    .grid-item {
+    cursor:pointer; overflow:hidden; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); border-radius:10px; overflow:hidden;
+    }
+    .grid-item img {
+    width:100%; display:block; transition:transform 0.5s;
+    }
+    .grid-item img:hover {
+    transform:scale(1.1);
+    }
+        .grid-item .meta{
+        position:absolute;left:12px;bottom:12px;background:var(--glass);padding:8px;border-radius:8px;font-weight:700;
+        }
+    .modal {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;
+    }
+    .modal img {
+    max-width:90%; max-height:80%; border-radius:10px;
+    }
+    .modal.close {
+    cursor:pointer; position:absolute; top:20px; right:30px; font-size:2rem; color:#fff;
+    }
+    
+
+    /* testimonials */
+    .testi{padding:28px 0;}
+    .swiper{padding:12px;}
+    .testi-card{background:var(--card);padding:20px;border-radius:12px;color:var(--muted);min-height:140px;}
+
+    /* pricing */
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+    .price-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;}
+    .price-card h4{margin:6px 0;}
+    .pkg-btn{display:inline-block;margin-top:12px;padding:10px 12px;border-radius:10px;background:transparent;border:1px solid var(--accent);cursor:pointer; color:#fff;}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted);}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;}
+
+    footer{padding:30px 0;color:var(--muted);font-size:14px;}
+    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+    .socials a{display:inline-block;margin-right:8px;}
+
+    /* floating icons */
+    .float-ws{position:fixed;right:18px;bottom:90px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.4);z-index:999;}
+    .float-top{position:fixed;right:18px;bottom:18px;background:var(--card);width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);z-index:999;}
+
+    /* responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      nav{display:none;}
+      .hamb{display:block;}
+      .menu.mobile{display:flex;flex-direction:column;gap:10px;padding:12px;background:var(--card);position:absolute;right:18px;top:70px;border-radius:10px;}
+      .container{padding:14px;}
+      .footer-grid{grid-template-columns:repeat(2,1fr);}
+      .contact-grid{grid-template-columns:1fr;}
+    }
+
+  </style>
+</head>
+<body>
+  <!-- floating decorative blobs -->
+  <div class="float-blob blob-a"></div>
+  <div class="float-blob blob-b"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">NG</div>
+        <div>
+          <div style="font-weight:800;">Ndele Graphics</div>
+          <div style="font-size:13px;color:var(--muted)">Premium Graphic Design & Branding</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+
+      <div class="hamb">
+        <button id="hambBtn" class="cta"><i class="fa fa-bars"></i></button>
+      </div>
+    </header>
+
+    <!-- mobile menu placeholder -->
+    <div id="mobileMenu" class="menu mobile" style="display:none"></div>
+
+    <main>
+      <div class="hero">
+        <div>
+          <h1>Premium visual identity for bold brands — Ndele Graphics</h1>
+          <p>We create clean, memorable logos, posters, brand kits, business cards and high-converting social designs tailored for small businesses and creators. Based in Mbeya, Tanzania — delivering fast, friendly and professional design services.</p>
+          <div class="actions">
+            <a href="#portfolio" class="cta">View Work</a>
+            <button class="pkg-btn" onclick="openWhatsAppWithMsg('Hello! I\'m interested in your services. Can we discuss?')"><p>Message on WhatsApp</p></button>
+            <button class="pkg-btn" id="themeToggle"><p>Toggle Theme</p></button>
+          </div>
+
+          <!-- SEO highlights -->
+          <div style="margin-top:18px;color:var(--muted)">
+            <strong>Top Services:</strong> Logo design, Posters/Flyers, Brand Kits, Business Cards, Social Media Designs. Fast delivery · Revisions included · Source files provided.
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:800">Featured Project</div>
+          <div style="margin-top:12px;color:var(--muted)">A recent birthday flyer for a Catherine — Vibrant, Higher Quality & Resolution. <br><small>Showcased in the portfolio below.</small></div>
+          <img src="recent flyer.jpg" alt="Featured project" style="width:100%;margin-top:12px;border-radius:10px;display:block">
+        </div>
+      </div>
+
+<div class="portfolio" id="portfolio">
+    <h2 style="margin-top:18px">Portfolio — Recent Works</h2>
+    <div class="filters">
+      <button onclick="filterSelection('all')"> Show All</button>
+      <button onclick="filterSelection('logos')"> Logos</button>
+      <button onclick="filterSelection('posters')"> Posters</button>
+      <button onclick="filterSelection('business-card')"> Business Card</button>
+      <button onclick="filterSelection('brand-kits')"> Brand Kits</button>
+      <button onclick="filterSelection('flyers')"> Flyers</button>
+      <button onclick="filterSelection('social-media')"> Social Media</button>
+    </div>
+
+    <div class="grid">
+      <!-- Logos (4) -->
+      <div class="grid-item logos card"><img src="logo 1.png" alt="Logo"></div>
+      <div class="grid-item logos card"><img src="logo 2.png" alt="Logo"></div>
+      <div class="grid-item logos card"><img src="logo 3.png" alt="Logo"></div>
+      <div class="grid-item logos card"><img src="logo 4.png" alt="Logo"></div>
+
+      <!-- Posters (4) -->
+      <div class="grid-item posters card"><img src="poster 1.jpg" alt="Poster"></div>
+      <div class="grid-item posters card"><img src="poster 2.jpg" alt="Poster"></div>
+      <div class="grid-item posters card"><img src="poster 3.jpg" alt="Poster"></div>
+      <div class="grid-item posters card"><img src="poster 4.jpg" alt="Poster"></div>
+
+      <!-- Business Card (1) -->
+      <div class="grid-item business-card card"><img src="business card 1.jpg" alt="Business Card"></div>
+
+      <!-- Brand Kits (3) -->
+      <div class="grid-item brand-kits card"><img src="brand kit 1.png" alt="Brand Kit"></div>
+      <div class="grid-item brand-kits card"><img src="brand kit 2.png" alt="Brand Kit"></div>
+      <div class="grid-item brand-kits card"><img src="brand kit 3.png" alt="Brand Kit"></div>
+
+      <!-- Flyers (4) -->
+      <div class="grid-item flyers card"><img src="flyer 1.jpg" alt="Flyer"></div>
+      <div class="grid-item flyers card"><img src="flyer 2.jpg" alt="Flyer"></div>
+      <div class="grid-item flyers card"><img src="flyer 3.jpg" alt="Flyer"></div>
+      <div class="grid-item flyers card"><img src="flyer 4.jpg" alt="Flyer"></div>
+
+      <!-- Social Media Designs (4) -->
+      <div class="grid-item social-media card"><img src="social 1.jpg" alt="Social Media"></div>
+      <div class="grid-item social-media card"><img src="social 2.jpg" alt="Social Media"></div>
+      <div class="grid-item social-media card"><img src="social 3.jpg" alt="Social Media"></div>
+      <div class="grid-item social-media card"><img src="social 4.png" alt="Social Media"></div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imgModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="" alt="">
+  </div>
+
+      <!-- Services / Pricing -->
+      <section id="services" style="margin-top:28px">
+        <h2>Services & Pricing</h2>
+        <p style="color:var(--muted)">Choose a package and message me — each button opens WhatsApp with the selected package details so I can start immediately.</p>
+
+        <div class="pricing" style="margin-top:12px">
+          <!-- each card contains data attributes used by JS to form whatsapp messages -->
+          <div class="price-card card" data-package="Logo - Basic" data-price="Tzs 25,000/=">
+            <div style="font-size:12px;color:var(--muted)">Logo — Basic</div>
+            <h4>Logo Basic</h4>
+            <div style="color:var(--muted)">1 concept · 2 revisions · PNG & JPG</div>
+            <div style="font-weight:800;margin-top:8px">Tzs 25,000/=</div>
+            <button class="pkg-btn" onclick="selectPackage(this)">Choose & Message</button>
+          </div>
+
+          <div class="price-card card" data-package="Logo - Premium" data-price="Tzs 50,000/=">
+            <div style="font-size:12px;color:var(--muted)">Logo — Premium</div>
+            <h4>Logo Premium</h4>
+            <div style="color:var(--muted)">3 concepts · Unlimited revisions · Source files</div>
+            <div style="font-weight:800;margin-top:8px">Tzs 50,000/=</div>
+            <button class="pkg-btn" onclick="selectPackage(this)">Choose & Message</button>
+          </div>
+
+          <div class="price-card card" data-package="Posters/Flyers - Standard" data-price="Tzs 15,000/=">
+            <div style="font-size:12px;color:var(--muted)">Posters / Flyers</div>
+            <h4>Poster / Flyer</h4>
+            <div style="color:var(--muted)">Custom layout · Print-ready</div>
+            <div style="font-weight:800;margin-top:8px">Tzs 15,000/=</div>
+            <button class="pkg-btn" onclick="selectPackage(this)">Choose & Message</button>
+          </div>
+
+          <div class="price-card card" data-package="Brand Kit - Pro" data-price="Tzs 75,000/=">
+            <div style="font-size:12px;color:var(--muted)">Brand Kit</div>
+            <h4>Brand Kit</h4>
+            <div style="color:var(--muted)">Logo variations, colors, typography, mockups</div>
+            <div style="font-weight:800;margin-top:8px">Tzs 75,000/=</div>
+            <button class="pkg-btn" onclick="selectPackage(this)">Choose & Message</button>
+          </div>
+
+          <div class="price-card card" data-package="Social Media Pack" data-price="Tzs 50,000/=">
+            <div style="font-size:12px;color:var(--muted)">Social Media</div>
+            <h4>Social Pack</h4>
+            <div style="color:var(--muted)">5 posts · Templates · Sizing</div>
+            <div style="font-weight:800;margin-top:8px">Tzs 50,000/=</div>
+            <button class="pkg-btn" onclick="selectPackage(this)">Choose & Message</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="testi">
+        <h2 style="margin-top:28px">What Clients Say</h2>
+        <div class="swiper mySwiper" style="margin-top:12px">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide testi-card">"Fast turnaround and great eye for detail. My brand looks pro!" — Asha M.</div>
+            <div class="swiper-slide testi-card">"Kazi nzuri! Ilikuwa haraka na ubora wa kupendeza." — Juma P.</div>
+            <div class="swiper-slide testi-card">"Excellent communication and creative concepts." — Safi Co.</div>
+            <div class="swiper-slide testi-card">"Their social templates boosted our engagement." — Cafe K.</div>
+            <div class="swiper-slide testi-card">"Very professional, recommended for startups." — MKL Studios</div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" style="margin-top:28px">
+        <h2>About Me</h2>
+        <div style="color:var(--muted);margin-top:8px">I’m Fotinati Ndele — a graphic designer from Mbeya, Tanzania. I help startups and creators build visual identities that convert. I specialize in logos, brand kits, print and social media designs. I combine modern aesthetics with practical marketing experience.</div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" style="margin-top:24px">
+        <h2>Contact</h2>
+        <div class="contact-grid" style="margin-top:12px">
+          <div class="card">
+            <form id="contactForm" onsubmit="sendEmail(event)">
+              <label for="name">Name</label>
+              <input id="name" name="name" required placeholder="Your name">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="you@example.com">
+              <label for="service">Service</label>
+              <select id="service" name="service">
+                <option>Logo Design</option>
+                <option>Posters / Flyers</option>
+                <option>Brand Kit</option>
+                <option>Business Cards</option>
+                <option>Social Media Designs</option>
+              </select>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project"></textarea>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <button type="submit" class="pkg-btn">Email Me</button>
+                <button type="button" class="pkg-btn" onclick="openWhatsAppFromForm()">Message on WhatsApp</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card">
+            <div style="font-weight:800">Quick Contact</div>
+            <div style="color:var(--muted);margin-top:8px">Email: ndelefotinati64@gmail.com<br>WhatsApp: +255 621 734 853<br>Location: Mbeya, Tanzania</div>
+            <div style="margin-top:12px">
+              <strong>Follow</strong>
+              <div class="socials" style="margin-top:8px">
+                <a href="https://www.instagram.com/ndele_grafix?igsh=MXNwNTd1ZDRreWJydw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1BEEnNq1Wc/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://wa.me/255621734853" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@ndele_grafix?_t=ZM-8zMOU1teqO8&_r=1" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://maps.app.goo.gl/CKJdE2mcGaaqKqMY9?g_st=ac" target="_blank"><i class="fa-solid fa-map-location"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div style="font-weight:800">Ndele Graphics</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:8px">Premium design for brands that need to stand out. &copy; <span id="year"></span> Ndele Graphics</div>
+        </div>
+        <div>
+          <div style="font-weight:800">Quick Links</div>
+          <div style="margin-top:8px"><a href="#portfolio">Portfolio</a><br><a href="#services">Services</a><br><a href="#contact">Contact</a></div>
+        </div>
+        <div>
+          <div style="font-weight:800">Contact & Socials</div>
+          <div style="color:var(--muted);margin-top:8px">Email: ndelefotinati64@gmail.com<br>WhatsApp: +255621734853</div>
+        </div>
+        <div>
+          <div style="font-weight:800">Newsletter</div>
+          <div style="color:var(--muted);margin-top:8px">Subscribe for updates (coming soon)</div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- floating WhatsApp and back-to-top -->
+  <a class="float-ws" href="https://wa.me/255621734853" target="_blank" title="Message on WhatsApp"><i class="fa-brands fa-whatsapp" style="font-size:20px"></i></a>
+  <button class="float-top" onclick="scrollToTop()" title="Back to top"><i class="fa fa-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    // basic interactivity
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // theme
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('ndele-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.addEventListener('click', ()=>{
+      const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('ndele-theme', t);
+    });
+
+    // hamburger mobile
+    const hambBtn = document.getElementById('hambBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hambBtn && hambBtn.addEventListener('click', ()=>{
+      if(mobileMenu.style.display==='flex'){ mobileMenu.style.display='none'; return }
+      mobileMenu.innerHTML = '<a href="#portfolio">Portfolio</a><a href="#services">Services</a><a href="#testimonials">Testimonials</a><a href="#about">About</a><a href="#contact">Contact</a>';
+      mobileMenu.style.display='flex';
+    });
+
+    // Swiper testimonials
+    const swiper = new Swiper('.mySwiper', {slidesPerView:1,spaceBetween:20,loop:true,pagination:{el:'.swiper-pagination',clickable:true},autoplay:{delay:4000}});
+
+    // back to top
+    function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
+
+    // open email app with filled info from form
+    function sendEmail(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+      const subject = encodeURIComponent('New design inquiry from '+name+' — '+service);
+      const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nService: '+service+'\n\nMessage:\n'+message);
+      window.location.href = 'mailto:ndelefotinati64@gmail.com?subject='+subject+'&body='+body;
+    }
+
+    // WhatsApp open from form
+    function openWhatsAppFromForm(){
+      const name = document.getElementById('name').value || 'Client';
+      const email = document.getElementById('email').value || '';
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value || '';
+      const text = encodeURIComponent('Hello Ndele, my name is '+name+' (Email: '+email+'). I\'m interested in: '+service+'. Details: '+message);
+      window.open('https://wa.me/255621734853?text='+text,'_blank');
+    }
+
+ // package selection
+    function selectPackage(btn){
+      const card = btn.closest('.price-card');
+      const pkg = card.dataset.package || card.querySelector('h4').innerText;
+      const price = card.dataset.price || '';
+      const text = encodeURIComponent('Hello! I\'m interested in the package: '+pkg+' (Price: '+price+'). Please I want to discuss details.');
+      window.open('https://wa.me/255621734853?text='+text,'_blank');
+    }
+
+    // general open whatsapp helper
+    function openWhatsAppWithMsg(msg){ window.open('https://wa.me/255621734853?text='+encodeURIComponent(msg),'_blank') }
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click', function(e){const target=document.querySelector(this.getAttribute('href')); if(target){e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); if(mobileMenu) mobileMenu.style.display='none';}})});
+
+  </script>
+
+  <!-- JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ndele Graphics",
+    "url": "https://ndele-graphics.example.com",
+    "logo": "https://ndele-graphics.example.com/favicon.ico",
+    "description": "Premium graphic design services: logos, posters, brand kits, business cards and social media designs.",
+    "telephone": "+255621734853",
+    "email": "ndelefotinati64@gmail.com",
+    "address": { "@type":"PostalAddress","addressLocality":"Mbeya","addressCountry":"TZ" }
+  }
+  </script>
+  <script>
+          // Filtering logic
+    function filterSelection(category) {
+      let items = document.querySelectorAll('.grid-item');
+      if (category === 'all') category = '';
+      items.forEach(item => {
+        item.style.display = item.classList.contains(category) || category === '' ? 'block' : 'none';
+      });
+    }
+    filterSelection('all');
+
+    // Modal logic
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const gridImages = document.querySelectorAll('.grid-item img');
+
+    gridImages.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
