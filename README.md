@@ -69,7 +69,7 @@ Fotinati Ndele
 Graphic Designer | Brand Strategist | Creative Entrepreneur
 
 📍 Mbeya, Tanzania
-📧 ndelecreative@gmail.com
+📧 ndelefotinati64@gmail.com
 📱 Instagram | Facebook
 
 📜 License
